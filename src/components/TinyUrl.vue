@@ -11,16 +11,18 @@
       </div>
       <button class="btn-generate" @click="generateTinyUrl()">GENERATE!</button>
     </div>
-    <div class="url-list">
-      <div class>
+    <div class="url-container">
         <input class="search-text" type="text" v-model="search" placeholder="SEARCH..." >
-      </div>
-      <div class="list" v-for="url in urls" :key="url">
-        <div class="short-url">{{url.short_url}}</div>
-        <div class="long-url">{{url.long_url}}</div>
-      </div>
+        <div class="url-list">
+      
+          <div class="list" v-for="url in urls" :key="url">
+            <div class="short-url">{{url.short_url}}</div>
+            <div class="long-url">{{url.long_url}}</div>
+          </div>
 
+        </div>
     </div>
+    
   </div>
 </template>
 
@@ -44,9 +46,11 @@ export default {
     }
   },
   watch: {
-    search() {
-      this.urls = [];
-      this.loadUrlList();
+    async search() {
+
+        this.urls = [];
+        await this.loadUrlList();
+        
     }
   },
   mounted:  async function () {
@@ -131,9 +135,13 @@ export default {
   margin: 12px;
 }
 
-.flex-container > .url-list {
-  background-color: #f1f1f1;
+.url-container {
   width: 60%;
+}
+
+.flex-container >  .url-container > .url-list {
+  background-color: #f1f1f1;
+  
   margin: 10px;
   text-align: center;
   line-height: 75px;
