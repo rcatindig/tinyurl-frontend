@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { getUrls, createUrl } from '../services/url.services'
 export default {
   data: ()=> {
    return{ 
@@ -38,12 +38,6 @@ export default {
     formData: {},
     search: "",
    }
-  },
-  computed: {
-    urlList() {
-      
-      return this.urls;
-    }
   },
   watch: {
     async search() {
@@ -82,7 +76,7 @@ export default {
     
 
 
-      let result= await axios.get(`${process.env.VUE_APP_APIURL}/urls`, { params: parameters});
+      let result= await getUrls(parameters);
       // console.log(result.data.data)
       const resultData = result.data.data;
 
@@ -92,7 +86,7 @@ export default {
     },
     generateTinyUrl: async function () {
      
-      await axios.post(`${process.env.VUE_APP_APIURL}/urls`, this.formData)
+      await createUrl(this.formData);
 
       this.formData = {};
       this.urls = [];
