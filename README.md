@@ -24,7 +24,8 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Sample:
-![ezgif-1-e51a004426](https://user-images.githubusercontent.com/18145922/200185060-cd7f30ef-fd1d-4447-a7d4-68c0c82ef7f1.gif)
+![ezgif-1-fd5edab839](https://user-images.githubusercontent.com/18145922/200186065-bc4a0919-1531-4663-b42e-acd56eb77714.gif)
+
 
 ## For API/Backend
 https://github.com/rcatindig/tinyurl-api
