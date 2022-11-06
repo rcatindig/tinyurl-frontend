@@ -49,8 +49,9 @@ export default {
     async search() {
 
         this.urls = [];
+        this.page = 1;
         await this.loadUrlList();
-        
+
     }
   },
   mounted:  async function () {
@@ -59,11 +60,11 @@ export default {
    await this.loadUrlList();
 
     const listElm = document.querySelector('.url-list');
-    listElm.addEventListener('scroll', async(e) => {
+    listElm.addEventListener('scroll', (e) => {
       if(listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
         console.log(e)
         this.page++;
-        await this.loadUrlList();
+        this.loadUrlList();
       }
     });
     
@@ -95,6 +96,7 @@ export default {
 
       this.formData = {};
       this.urls = [];
+      this.page = 1;
       this.loadUrlList();
       
     }
